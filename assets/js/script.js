@@ -19,10 +19,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-
+// next very useful /**  creates a pop-up on hover displaying info contained whithin whever the fuction is called !!
+/**
+ * The main game "loop", called when the game is first loaded
+ * and after the user's answer has been processed
+ */
 function runGame() {
-
+    //Creates 2 random nums between 1 and 25
+    let num1 = Math.floor(Math.random() * 25) + 1;
+    let num2 = Math.floor(Math.random() * 25) + 1;
 }
+
 
 function checkAnswer() {
 
