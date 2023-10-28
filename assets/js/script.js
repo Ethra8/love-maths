@@ -33,6 +33,8 @@ function runGame(gameType) {
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`; //throw JS  keyword stops game from running and print to console whatever ERROR message is between `` 
@@ -73,6 +75,8 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"]; //returns result of operand1 + operand2, and predetermines the next game: addition
     } else if ( operator === "x") {
         return [operand1 * operand2, "multiply"]; //returns result of operand1 x operand2, and predetermines the next game: multiply
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -99,13 +103,16 @@ function incrementWrongAnswer() {
 }
 
 function displayAdditionQuestion(operand1, operand2) {
-    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand1').textContent = operand1;//could also be .innerHTML
     document.getElementById('operand2').textContent = operand2;
     document.getElementById('operator').textContent = "+";
 
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2; //short for Is operand1 > than operand2? if so, return operand1, ELSE (:) return operand2
+    document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1; // CONDITION? return if CONDITION = TRUE : return if CONDITION = FALSE
+    document.getElementById('operator').textContent = "-";
 
 }
 
