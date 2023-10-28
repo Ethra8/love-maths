@@ -31,9 +31,11 @@ function runGame(gameType) {
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2);
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
-        throw `Unknown game type: ${gameType}. Aborting!`; //throw JS  keyword stops game from running and print to console whatever ERROR message is between ``
+        throw `Unknown game type: ${gameType}. Aborting!`; //throw JS  keyword stops game from running and print to console whatever ERROR message is between `` 
     }
 }
 
@@ -69,6 +71,8 @@ function calculateCorrectAnswer() {
 
     if (operator === "+"){
         return [operand1 + operand2, "addition"]; //returns result of operand1 + operand2, and predetermines the next game: addition
+    } else if ( operator === "x") {
+        return [operand1 * operand2, "multiply"]; //returns result of operand1 x operand2, and predetermines the next game: multiply
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -81,7 +85,7 @@ function calculateCorrectAnswer() {
 function incrementScore() {
 
     let oldScore = parseInt(document.getElementById('score').innerText); // also .textContent
-    document.getElementById('score').innerText = ++oldScore;// also oldScore + 1 -> putting the ++ incrementse by 1, but after the variable doesn't let user see increment, putting ++ before the variable, shows the increment to the user
+    document.getElementById('score').innerText = oldScore++;// also oldScore + 1 -> putting the ++ incrementse by 1, but after the variable doesn't let user see increment, putting ++ before the variable, shows the increment to the user
 }
 
 /**
@@ -105,6 +109,9 @@ function displaySubtractQuestion() {
 
 }
 
-function displayMultiplyQuestion() {
+function displayMultiplyQuestion(operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "x";
 
 }
