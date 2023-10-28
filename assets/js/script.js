@@ -49,8 +49,10 @@ function checkAnswer() {
 
     if (isCorrect) { //short way of saying if isCorrect == true
         alert("Hey, You got it right! :D");
+        incrementScore();
     } else {
-        alert(`Awwwwww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`)
+        alert(`Awwwwww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]); //index 1 of array is the same game type, which is the default next game type 
@@ -73,11 +75,22 @@ function calculateCorrectAnswer() {
     }
 }
 
+/**
+ * Gets the current score from the DOM, and increments it by 1
+ */
 function incrementScore() {
 
+    let oldScore = parseInt(document.getElementById('score').innerText); // also .textContent
+    document.getElementById('score').innerText = ++oldScore;// also oldScore + 1 -> putting the ++ incrementse by 1, but after the variable doesn't let user see increment, putting ++ before the variable, shows the increment to the user
 }
 
+/**
+ * Gets the current tally of incorrect answers from the DOM, and increments it by 1
+ */
 function incrementWrongAnswer() {
+    
+    let oldScore = parseInt(document.getElementById('incorrect').innerText); // also .textContent
+    document.getElementById('incorrect').innerText = ++oldScore;// also oldScore + 1 -> putting the ++ incrementse by 1, but after the variable doesn't let user see increment, putting ++ before the variable, shows the increment to the user
 
 }
 
